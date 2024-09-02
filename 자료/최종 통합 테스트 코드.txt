@@ -1,0 +1,85 @@
+- 정지용 (고객 필드)
+insert into client values('jim','1234','짐캐리','010-7364-4856',22,3000,'Y');
+insert into client values('mino','9999','송민호','010-9461-5533','30',0,'Y');
+insert into client values('paek','0410','백종원','010-8374-2027',45,500,'N');
+insert into client values('isabel','5959','이사벨','010-4679-5966',17,1000,'Y');
+insert into client values('ddong','5678','홍길동','010-4321-6789',62,0,'N');
+
+- 이현건 (고객 필드)
+insert into Client values('dlgusrjs', 'sklfk122', '정이신', '010-1111-2222', 30, 1000, 'Y');
+insert into Client values('wjdwldyd', '45657', '김지균', '010-2222-3535', 20, 50, 'N');
+insert into Client values('dlaudrbs', 'ajskljf', '이태용', '010-3333-2785', 45, 600, 'N');
+insert into Client values('tlsxogjs', 'djkslj44', '신정건', '010-4444-4518', 78, 1456, 'N');
+insert into Client values('rlaxogks', 'sjkgljn1', '이태환', '010-5555-4563', 18, 45677, 'Y');
+
+- 백승헌 (역 필드)
+insert into station values('s01','서울역');
+insert into station values('s02','부산역');
+insert into station values('s03','대전역');
+insert into station values('s04','대구역');
+insert into station values('s05','용산역');
+insert into station values('s06','여수역');
+insert into station values('s07','광주역');
+insert into station values('s08','천안역');
+insert into station values('s09','목포역');
+insert into station values('s10','울산역');
+
+- 이명균 (기차정보)
+insert into Train values('K01','KTX-T001','KTX');
+insert into Train values('K02','KTX-T002','KTX');
+insert into Train values('K03','KTX-T003','KTX');
+insert into Train values('S11','SRT-T011','SRT');
+insert into Train values('S12','SRT-T012','SRT');
+insert into Train values('S13','SRT-T013','SRT');
+insert into Train values('I23','ITX-T023','ITX');
+insert into Train values('I24','ITX-T024','ITX');
+insert into Train values('I25','ITX-T025','ITX');
+insert into Train values('I26','ITX-T026','ITX');
+insert into Train values('M34','새마을호-T034','새마을');
+insert into Train values('M35','새마을호-T035','새마을');
+insert into Train values('M36','새마을호-T036','새마을');
+insert into Train values('M37','새마을호-T037','새마을');
+insert into Train values('I45','ITX-청춘05','ITX-청춘');
+insert into Train values('I46','ITX-청춘06','ITX-청춘');
+insert into Train values('I47','ITX-청춘07','ITX-청춘');
+insert into Train values('N56','누리호-T088','누리호');
+insert into Train values('N57','누리호-T089','누리호');
+
+- 이현건, 이명균, 정지용 (시간표)
+insert into Schedule values('s35', '2024-09-14 16:15:00', 's01', 's04', 'S11');
+insert into Schedule values('s99', '2024-09-14 11:12:00', 's05', 's04', 'K03');
+insert into Schedule values('s89', '2024-09-18 15:32:00', 's04', 's09', 'I24');
+insert into Schedule values('s64', '2024-09-16 19:48:00', 's08', 's03', 'M36');
+insert into Schedule values('s58', '2024-09-17 21:07:00', 's02', 's05', 'K01');
+insert into Schedule values('s14','2024-09-14 14:10:00','s03','s04','M34');
+insert into Schedule values('s22','2024-09-15 22:20:00','s01','s07','K01');
+insert into Schedule values('s02','2024-09-16 02:15:00','s05','s09','S11');
+insert into Schedule values('s08','2024-09-17 08:55:00','s10','s04','I24');
+insert into Schedule values('s17','2024-09-18 17:35:00','s08','s03','N57');
+insert into schedule values ('j01','2024/08/29 14:30:00','s01','s03','K01');
+insert into schedule values ('j02','2024/08/29 14:00:00','s03','s05','K03');
+insert into schedule values ('j03','2024/10/10 15:00:00','s03','s05','S11');
+insert into schedule values ('j04','2024/10/15 09:00:00','s01','s07','I25');
+insert into schedule values ('j05','2024/10/15 20:30:00','s10','s01','M34');
+insert into schedule values ('j06','2024/11/11 07:10:00','s01','s03','I45');
+insert into schedule values ('j07','2024/11/30 14:30:00','s05','s06','N56');
+insert into schedule values ('j08','2024/09/30 17:30:00','s03','s06','S13');
+insert into schedule values ('j09','2024/12/24 12:00:00','s04','s08','I26');
+insert into schedule values ('j10','2024/12/25 10:55:00','s02','s09','M37');
+
+- 이현건, 이명균, 정지용 (예약)
+insert into Reservation values('r04', '2024-08-30 09:14:05', 'mino', 's58');
+insert into Reservation values('r13', '2024-08-29 15:25:17', 'paek', 's64');
+insert into Reservation values('r11', '2024-08-29 07:15:55', 'isabel', 's89');
+insert into Reservation values('r08', '2024-08-31 21:46:32', 'ddong', 's99');
+insert into Reservation values('r01', '2024-08-30 17:01:09', 'jim', 's35');
+insert into reservation values('r06','2024-08-28 14:01:10','jim','j07');
+insert into reservation values('r02','2024-09-01 08:11:11','wjdwldyd','j07');
+insert into reservation values('r03','2024-10-05 16:41:29','isabel','j05');
+insert into reservation values('r07','2024-08-05 16:10:00','ddong','j04');
+insert into reservation values('r05','2024-08-05 13:31:29','dlaudrbs','j09');
+insert into reservation values('r21','2024-08-28 12:18:12','jim','j07');
+insert into reservation values('r32','2024-09-01 09:00:00','wjdwldyd','j07');
+insert into reservation values('r43','2024-10-05 19:30:00','isabel','j05');
+insert into reservation values('r54','2024-08-05 18:00:33','ddong','j04');
+insert into reservation values('r65','2024-08-05 11:11:11','dlaudrbs','j09');

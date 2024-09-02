@@ -1,0 +1,45 @@
+create table client(
+  user_id varchar2(10) not null,
+  user_pw varchar2(10) not null,
+  user_name varchar2(10) not null,
+  user_tel varchar2(13) not null,
+  user_age number(3) not null,
+  user_point number(5) not null,
+  user_verify varchar2(1) check(user_verify in('Y','N')),
+  constraint pk_user_id primary key(user_id)
+);
+
+create table station(
+  st_id varchar2(3) not null,
+  st_name varchar2(20) not null,
+  constraint pk_st_id primary key(st_id)
+);
+
+create table train(
+  tr_id varchar2(3) not null,
+  tr_name varchar2(20) not null,
+  tr_type varchar2(10) not null,
+  constraint pk_tr_id primary key(tr_id)
+ );
+
+create table schedule(
+  sch_id varchar2(3) not null,
+  sch_time timestamp not null,
+  s_st varchar2(3) not null,
+  e_st varchar2(3) not null,
+  tr_id varchar2(3) not null,
+  constraint pk_sch_id primary key(sch_id),
+  constraint fk_s_st foreign key(s_st) references station(st_id),
+  constraint fk_e_st foreign key(e_st) references station(st_id),
+  constraint fk_tr_id foreign key(tr_id) references train(tr_id)
+);
+
+ create table reservation(
+  res_id varchar2(3) not null,
+  res_time timestamp not null,
+  user_id varchar2(10) not null,
+  sch_id varchar2(3) not null,
+  constraint pk_res_id primary key(res_id),
+  constraint fk_user_id foreign key(user_id) references client(user_id),
+  constraint fk_sch_id foreign key(sch_id) references schedule(sch_id)
+  );
