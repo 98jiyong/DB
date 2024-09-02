@@ -47,3 +47,23 @@ select
 update
 delete
 
+1. 테이블 관리 	
+: create table, drop table, alter table
+: 테이블(릴레이션), 속성(속성타입, 제약조건)
+: 타입 - int, number*, varchar2, timestamp
+: 제약 조건 : 유일성(기본키, unique), not null, check, default
+: 키 	- 기본키 - 유일성, not null, 인덱스형성(검색속도 향상 - where 절에서 사용
+	- 외래키 - 컬럼 투 컬럼, 자식 릴레이션 컬럼이 부모
+		릴레이션의 컬럼을 참조한다.
+		외래키 제약 조건 : cascade, set null
+: ERD - 개체와 개체의 관계분석 1:1, 1:N, N:M 분석 후 테이블 형성
+
+2. 테이블에 저장된 튜플의 조작
+삽입 - insert
+갱신 - update : 특정 튜플을 선택하여 갱신하려면 where절 사용 
+삭제 - delete : 특정 튜플을 선택하여 삭제하려면 where절 사용 
+검색 - select :  각 절의 의미 암기, 절의 실행 순서 이해
+
+3. 함수 :   함수를 호출하고 함수의 기능을 실행하고 결과값을 리턴, 
+             결과값을 리턴받아서 처리 한다...  예를 들어  count(*)함수를 호출하면 튜플의 수를 
+             카운팅하여 카운팅 결과값을 리턴한다.
