@@ -6,10 +6,6 @@
 [2. 자료형 설명](#2-자료형-설명)<br>
 [3. 용어 설명](#3-용어-설명)<br>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-
-
 ## 1. 개발 환경
 **DBMS** - Data Base Management Sysytem => **Oracle 11g** 프로그램 사용<br>
 Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
@@ -22,7 +18,7 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
 
 [목차로](#목차)
 
-<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br>
 
 ## 2. 자료형 설명
 - 문자형 데이터 타입
@@ -48,7 +44,7 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
 
 [목차로](#목차)
 
-<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br>
 
 ## 3. 용어 설명
 - **릴레이션**<br>
@@ -76,7 +72,7 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
 
 [목차로](#목차)
 
-<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br>
 
 
 
@@ -84,12 +80,4 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
 ### 자료 폴더에 있음
 
 
-
-
-ㄴㄴ<br>
-ㄴㄴ<br>
-v
-ㄴㄴ<br>
-ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>
-ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>ㄴㄴ<br>
 [목차로](#목차)
