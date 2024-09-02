@@ -1,37 +1,76 @@
-create table hm(
-no number(2),
+create table users(
+no int primary key,
 name varchar2(10),
-point number(3),
 addr varchar2(10),
-indate date default sysdate
-);
+point number,
+grade varchar2(1),
+jumin varchar2(8));
 
-insert into hm values(1, '홍길동', 30, '서울시', sysdate + 2);
-insert into hm values(2, '일지매', 50, '수원', SYSDATE + 1);
-insert into hm values(3, '이지매', 40, '서울', sysdate - 1);
-insert into hm values(4, '성시골', 60, '대전', SYSDATE);
-insert into hm values(5, '김티처', 70, '용인시', sysdate - 2);
+/* 테이블 구조 확인 */
+desc users;
 
-select COUNT(*) from hm where point < 50; /* hm 테이블에서 point 컬럼에 값이 50 미만인 갯수 세기 */
-select name ,point from hm where point <= 50; /*  */
-select * from hm where point < 50 order by point desc;
+insert into users values (1,'kimsu','suwon',99.12,1,'820405-1');
+insert into users values (2,'leesu','suwon city',89.00,2,'970805-2');
+insert into users values (3,'choihee','seoul',88.21,1,'910204-2');
+insert into users values (4,'leesil','suwon',77.62,4,'850405-1');
+insert into users values (5,'james','seoul',60.22,1,'871105-1');
+insert into users values (6,'parksuji','suwon',90.12,3,'880405-2');
+insert into users values (7,'kimrae','yougin',89.96,3,'820105-1');
+insert into users values (8,'sangJin','youngin',99.31,3,'990420-2');
+insert into users values (9,'Leechan','incheon',79.12,2,'970605-2');
+insert into users values (10,'kimmi','incheon',79.92,1,'810505-1');
+insert into users values (11,'ryusu','seoul',85.32,4,'861205-2');
+insert into users values (12,'Gosu',null,82.13,4,'810715-1');
 
-desc hm;
-alter table hm add (indate timestamp);
-select * from hm;
+/* 레코드 확인 */
+select * from users;
 
-/* 모든 학생의 이름과 포인트를 출력합니다. 포인트는 현재 포인트에서 10점 올려서 출력*/
-select name 이름, point + 10 가산포인트 
-from hm;
-/* 이름 현재포인트 가산포인트 -> 이름은 학생의 이름, 현재포인트는 저장된 포인트, 가산포인트는 +10점 올린 포인트 */
-select name 이름, point 현재포인트, point + 10 가산포인트 
-from hm;
+/* 1번 ~ 12번 목표문제 */
+select name 이름, point 점수, substr(jumin,1,6) 생년월일 from users;
+select name 이름, addr 주소, point 점수 from users where point >= 80;
+select name 이름, addr 주소, point 점수 from users where name like 'kim%';
+select name 이름, addr 주소, point+10 보정한점수 from users;
+select point + 1 점수 from users where grade = 1;
+select name 이름, addr 주소, point 점수 from users where point >= 80 and point < 90;
+select name, addr, grade, point, jumin from users where addr is null;
+select point * 1.1 from users where grade = 4;
+select no 번호, name 이름, addr 주소, point 점수 from users order by point;
+select no 번호, name 이름, grade 학년, point 점수 from users order by grade asc, point desc;
+select name 이름, point 점수, point-10 보정한점수 from users where point-10 >= 80;
+select (name || ' '  || addr || ' ' || grade) "이름 주소 학년" from users where grade = 2;
 
-/* 이름뒤에 님을 붙혀서 출력하시오. 모든 사람의 이름과 포인트를 출력합니다.*/
-select concat (name,'님') 이름, point 포인트 from hm;
-/*모든 사람의 이름과 포인트와 등록일을 출력합니다. 이때 가입순서에 따라 출력합니다. 가장 나중에 가입한 사람이 제일 먼저 출력 */
-select name 이름, point 포인트, indate 등록일 from hm order by indate desc;
-/*포인트가 50이상인 사람의 이름과 정보를 출력합니다. 정보는 no,이름,포인트가 합쳐진 문자열이다. */
-select name 이름, concat(no,concat(name,point)) 정보 from hm where point >= 50;
-/* 기준포인트는 60이다. 모든 회원이 기준포인트를 맞추기 위해서 부족한포인트를 출력하시오.. */  
-select name 이름, 60 기준포인트, point 현재포인트, (60 - point) 부족한포인트 from hm;
+/* 13번 ~ 23번 추가문제 */
+select count(*) from users;
+select count(*) from users where grade = 1;
+select LOWER(name) 소문자이름, grade 학년 from users;
+select name 이름, grade 학년, substr(addr,1,2) 주소 from users where grade = 2;
+select trunc(point,-1) 점수 from users;
+select round(point) 점수 from users;
+select count(*) as "2학년" from users where grade = 2;
+select count(*) as "1학년중 80점" from users where grade = 1 and point >=80;
+select avg(point) from users where grade = 3;
+select MAX(point) from users;
+select MIN(point) from users where grade = 2;
+
+/* 24번 ~ 27번 못푸는 문제 */
+/* trim 함수는 반복적인 문자를 제거하기 때문에 9번과 10번의 incheon에 n이 반복되어서 'in'이 아닌 'i'만 출력
+select ltrim(addr,substr(addr,1,2)) "앞두글자를 제외한 글자", rtrim(addr,ltrim(addr,substr(addr,1,2))) "앞에 값을 rtrim 사용" from users;
+select concat(rtrim(addr,ltrim(addr,substr(addr,1,2))),'*') "@@*" from users;
+*/
+select concat(substr(addr,1,2),'*') from users;
+select '*' || name || '*' from users;
+select concat(substr(jumin,1,2),'년') || concat(substr(jumin,3,2),'월') || concat(substr(jumin,5,2),'일') 생년월일 from users;
+select decode(substr(jumin,instr(jumin,'-',1)+1,1),1,'남',2,'여') 성별 from users;
+
+/* 28번 ~ 30번 추가문제 */
+select name 이름, jumin 주민번호, 124-substr(jumin,1,2) 나이 from users;
+select name 이름, rpad(substr(name,1,1),length(name),'*') "a***" from users;
+select name 이름, grade 학년, decode(grade,1,name||'*',2,name||'%',3,name||'#',4,name||'!') 조건 from users;
+--다른풀이
+select name 이름, grade 학년, case 
+when grade = 1 then name || '*'
+when grade = 2 then name || '%'
+when grade = 3 then name || '#'
+when grade = 4 then name || '!'
+end 조건
+from users;
