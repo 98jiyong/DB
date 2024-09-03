@@ -77,6 +77,14 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
 <br><br><br>
 
 ## 4. CRUD
+- **C**<br>
+  - CREATE TABLE [테이블명] (<br>
+  	컬럼명1 데이터타입() 제약조건,<br>
+  	컬럼명2 데이터타입() 제약조건,<br>
+  	…<br>
+  );<br>
+
+  - INSERT INTO [테이블명] VALUES (컬럼 값1, 컬럼 값2, ... , 컬럼 값n);
 
 [목차로](#목차)
 
