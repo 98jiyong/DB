@@ -82,9 +82,34 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
   	컬럼명1 데이터타입() 제약조건,<br>
   	컬럼명2 데이터타입() 제약조건,<br>
   	…<br>
-  );<br>
+    );<br>
 
-  - INSERT INTO [테이블명] VALUES (컬럼 값1, 컬럼 값2, ... , 컬럼 값n);
+  - INSERT INTO [테이블명] VALUES (컬럼 값1, 컬럼 값2, ... , 컬럼 값n);<br>
+- **R**<br>
+  - SELECT [] FROM [] WHERE [] (GROUP BY[]) ORDER BY []<br>
+  - SELECT 뒤에는 개수를 세는 집계 COUNT가 올 수도 있고 전체를 셀 수 있는 *이 올 수 있다.<br>
+    여러 개의 컬럼을 가져오고 싶을 땐 [컬럼1, 컬럼2, … ] 쓰면 된다. <br>
+
+  - SELECT – 화면에 출력<br>
+    FROM – 대상 테이블<br>
+    WHERE – 대상 테이블로 부터 튜플 선정 조건<br>
+    GROUP BY – 그룹화 후 요약<br>
+    ORDER BY – 출력할 때 정렬<br>
+  
+  - 순서 : FROM -> WHERE -> GROUP BY -> SELECT -> ORDER BY 순서로 생각 및 분석 <br>
+- **U**<br>
+  - 특정 튜플을 선택하여 갱신하려면 WHERE절 사용<br>
+
+  - ALTER TABLE [테이블명] ADD (컬럼명 데이터타입 ())<br>
+    ALTER TABLE [테이블명] MODIFY (컬럼명 데이터타입 ())<br>
+    ALTER TABLE [테이블명] DROP COLUMN 컬럼명<br>
+    ALTER TABLE [테이블명] RENAME COLUMN 원래컬럼명 TO 바꿀컬럼명<br>
+
+  - UPDATE [테이블명] SET [컬럼명 = 데이터 값] WHERE [조건]<br>
+    -> SET 컬럼명 = 데이터 값 <br>
+  - 선택한 컬럼에 기재한 데이터 값으로 데이터 갱신 
+
+
 
 [목차로](#목차)
 
