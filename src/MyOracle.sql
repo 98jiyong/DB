@@ -28,6 +28,12 @@ select * from users;
 
 --1 ~ 12 목표문제
 select name 이름, point 점수, substr(jumin,1,6) 생년월일 from users;
+/* 
+2. 사람의 이름과 주소, 점수를 검색하기 위해서는 select절 안에는 이름과 주소, 점수 컬럼이 들어와야하고
+이 컬럼들은 users테이블 안에 있기 때문에 from절 users테이블이 온다.
+마지막으로 80점 이상의 사람들이 출력되어야하기 때문에 where절 점수가 80점 이상이라는 조건을 줘서
+user테이블 안에 있는 튜플들 중에 조건에 충족하는 튜플을 골라 이름과 주소, 점수를 출력한다.
+*/
 select name 이름, addr 주소, point 점수 from users where point >= 80;
 select name 이름, addr 주소, point 점수 from users where name like 'kim%';
 select name 이름, addr 주소, point+10 보정한점수 from users;
@@ -64,7 +70,22 @@ select concat(substr(jumin,1,2),'년') || concat(substr(jumin,3,2),'월') || conca
 select decode(substr(jumin,instr(jumin,'-',1)+1,1),1,'남',2,'여') 성별 from users;
 
 --28 ~ 30 추가문제
-select name 이름, jumin 주민번호, 124-substr(jumin,1,2) 나이 from users;
+--select name 이름, jumin 주민번호, extract(year from systimestamp) - fn_age(jumin) 나이 from users;
+--select name 이름, jumin 주민번호, fn_age(jumin) 나이 from users;
+--
+--create or replace function fn_age(val_jumin varchar2)
+--return number
+--is
+--v_age number(4);
+--begin
+--    if substr(val_jumin,1,2) > substr(systimestamp,1,2) then
+--        v_age := concat('19',substr(val_jumin,1,2));
+--    else 
+--        v_age := concat('20',substr(val_jumin,1,2));
+--    end if;
+--    return v_age;
+--end fn_age;
+
 select name 이름, rpad(substr(name,1,1),length(name),'*') "a***" from users;
 select name 이름, grade 학년, decode(grade,1,name||'*',2,name||'%',3,name||'#',4,name||'!') 조건 from users;
 
@@ -76,3 +97,49 @@ when grade = 3 then name || '#'
 when grade = 4 then name || '!'
 end 조건
 from users;
+
+--Group by
+select grade, count(*) 인원수
+from users
+group by grade 
+order by grade;
+
+select max(point) 최고점, min(point) 최저점,grade 학년, count(*) 인원수
+from users
+group by grade
+order by grade;
+
+--select max(point)
+--from users
+--group by grade;
+
+select count(*) 인원수, grade
+from users
+where grade in (3,4)
+group by grade;
+
+select max(point) - min(point), count(*), grade
+from users
+where grade in (1,2)
+group by grade;
+
+select substr(jumin,1,2), count(*)
+from users
+group by substr(jumin,1,2);
+
+select grade 학년, count(*) 인원수
+from users
+group by grade
+having count(*) >= 3
+order by grade;
+
+select grade 학년, round(avg(point)) 평균, round((select avg(point) from users)) 전체평균
+from users
+group by grade
+having avg(point) >= (select avg(point) from users);
+
+select upper(name) 이름, point 점수
+from users
+where point = (select max(point) from users);
+
+--그룹별로 가장 높은 점수를 획득한 사람의 이름과 점수는?
