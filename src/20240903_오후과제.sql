@@ -56,8 +56,8 @@ select grade, count(*) from muser group by grade having grade in (2,4);
 
 -- 추가문제
 select name 이름, reg_num 주민등록번호, fn_age(reg_num) * 12 + substr(reg_num,3,2) 개월수 from muser;
-select distinct (select sum(time*12) from muser where time < 32) "30~31세", 
-(select sum(time*12) from muser where time >= 32) "32세 이상" from muser;
+select (select sum(time*12) from muser where time < 32) "30~31세", 
+(select sum(time*12) from muser where time >= 32) "32세 이상" from dual;
 select distinct time, sum(time*12)over(partition by time) from muser order by time;
 /*
 select time from muser where time between 30 and 31;
