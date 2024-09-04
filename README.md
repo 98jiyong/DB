@@ -6,8 +6,10 @@
 [2. 자료형 설명](#2-자료형-설명)<br>
 [3. 용어 설명](#3-용어-설명)<br>
 [4. CRUD](#4-CRUD)<br>
-[5. 함수 설명](#5-함수-설명)<br>
-[6. ERD](#6-ERD)<br>
+[5. ERD](#5-ERD)<br>
+[6. 함수 설명](#6-함수-설명)<br>
+[7. 그룹화](#7-그룹화)<br>
+[8. JOIN](#8-JOIN)<br>
 
 ## 1. 개발 환경
 **DBMS** - Data Base Management Sysytem => **Oracle 11g** 프로그램 사용<br>
@@ -19,9 +21,9 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
 - 호스트 이름, 포트, SID 설정 (내부에서 사용할 경우 호스트는 localhost 포트는 기본 1521 SID는 전역변수 이름)
 - 테스트 후 '상태:성공'이라는 메세지가 뜬다면 접속<br>
 
-[목차로](#목차)
-
 <br><br><br>
+
+[목차로](#목차)<br>
 
 ## 2. 자료형 설명
 - 문자형 데이터 타입
@@ -45,9 +47,9 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
   - TIMESTAMP<br>
    DATE 타입의 확장된 타입이다. 9자리의 밀리초까지 저장이 가능하다.<br>
 
-[목차로](#목차)
-
 <br><br><br>
+
+[목차로](#목차)<br>
 
 ## 3. 용어 설명
 - **릴레이션**<br>
@@ -72,21 +74,21 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
 - **ERD**<br>
 개체와 개체의 관계분석 1:1, 1:N, N:M 분석 후 테이블 형성<br>
 
-[목차로](#목차)
-
 <br><br><br>
+
+[목차로](#목차)<br>
 
 ## 4. CRUD
 - **C**<br>
   - CREATE TABLE [테이블명] (<br>
   	컬럼명1 데이터타입() 제약조건,<br>
   	컬럼명2 데이터타입() 제약조건,<br>
-  	…<br>
-    );<br>
+  	… );<br>
 
   - INSERT INTO [테이블명] VALUES (컬럼 값1, 컬럼 값2, ... , 컬럼 값n);<br>
+
 - **R**<br>
-  - SELECT [] FROM [] WHERE [] (GROUP BY[]) ORDER BY []<br>
+  - SELECT [ ] FROM [ ] WHERE [ ] (GROUP BY[ ]) ORDER BY [ ]<br>
   - SELECT 뒤에는 개수를 세는 집계 COUNT가 올 수도 있고 전체를 셀 수 있는 *이 올 수 있다.<br>
     여러 개의 컬럼을 가져오고 싶을 땐 [컬럼1, 컬럼2, … ] 쓰면 된다. <br>
 
@@ -97,6 +99,7 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
     ORDER BY – 출력할 때 정렬<br>
   
   - 순서 : FROM -> WHERE -> GROUP BY -> SELECT -> ORDER BY 순서로 생각 및 분석 <br>
+
 - **U**<br>
   - 특정 튜플을 선택하여 갱신하려면 WHERE절 사용<br>
 
@@ -107,25 +110,101 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
 
   - UPDATE [테이블명] SET [컬럼명 = 데이터 값] WHERE [조건]<br>
     -> SET 컬럼명 = 데이터 값 <br>
-  - 선택한 컬럼에 기재한 데이터 값으로 데이터 갱신 
+  - 선택한 컬럼에 기재한 데이터 값으로 데이터 갱신<br>
 
-
-
-[목차로](#목차)
-
-<br><br><br>
-
-## 5. 함수 설명
-
-[목차로](#목차)
+- **D**<br>
+  - 특정 튜플을 선택하여 삭제하려면 WHERE절 사용<br>
+  
+  - DROP TABLE [테이블명]<br>
+  
+  - DELETE FROM [테이블명] WHERE [조건]<br>
 
 <br><br><br>
 
-## 6. ERD
+[목차로](#목차)<br>
+
+## 5. ERD
 개념적 설계 => 논리적 설계 => 물리적 설계<br>
 **개념적 설계**에 해당하는 부분<br>
 관계는 **1:1, 1:N, N:M**이 있다.<br> 
+데이터 정규화를 진행하기 위해 ERD를 설계했다.<br>
+(그림 추가하면서 설명)
+<br><br><br>
 
-[목차로](#목차)
+[목차로](#목차)<br>
+
+## 6. 함수 설명
+함수는 특정 기능을 제공한다.<br>
+내가 직접 만들어 사용하는 것과 이미 만들어진 것을 사용하는 것으로 구분할 수 있다.<br>
+함수는 하나하나 다 외우면 좋지만 그럴 수 없기에 검색으로 찾으면서 사용하자<br>
+그렇게 사용하면서 몸에 익히자 !<br>
+- **만들어 사용**
+
+  - 매개변수<br>
+  function (abc) -> 소괄호 안에 있는 abc - 함수를 선언할 때 주는 값<br>
+
+  - 인자<br>
+  매개변수 자리에 들어가는 값 - 함수를 호출할 때 입력하는 실제 값<br>
+
+- **내장함수** *(사용 방법은 검색해서)*
+
+  - 집계 함수<br>
+  max, min, avg, sum, mod, count, etc.<br>
+
+  - 문자열 함수<br>
+  concat, substr, instr, replace, lpad, rpad, trim, ltrim, rtrim, like, etc.<br>
+
+  - 숫자 함수<br>
+  trunc, mod, sign, round, ceil, floor, etc.<br>
+
+  - 날짜 함수<br>
+  sysdate, extract, months_between, add_months, next_day, last_day, etc.<br>
+
+  - 형변환 함수<br>
+  to_char, to_date, to_number, etc.<br>
+
+  - 조건 함수<br>
+  decode, case-when-then, etc.<br>
+
+  - NULL 처리 함수<br>
+  nvl, nvl2, etc.<br>
 
 <br><br><br>
+
+[목차로](#목차)<br>
+
+## 7. 그룹화
+그룹화는 CRUD에 R인 SELECT에서 사용된다.<br>
+중요한 문법이라고 생각하기 때문에 추가로 분리해서 정리!<br>
+
+데이터에 대한 집계를 하기 위해, 여러행의 값을 더하거나, 개수를 세는 등<br>
+데이터에 관한 계산을 위해서 그룹화를 한다.<br>
+데이터를 그룹화 할 때 어떤 컬럼값을 기준으로 그룹 함수를 적용할지 잘 생각해야 한다.<br>
+
+- **문법**<br>
+  - SELECT [ ] FROM [ ] WHERE [ ] GROUP BY [ ] HAVING [ ] ORDER BY [ ];<br>
+
+- **해석**<br>
+  - WHERE 조건절 : 대상이 되는 데이터를 한번 조건에 맞추어 필터링.
+
+  - GROUP BY : 조건에 맞지 않는 row는 빼버린, 필터링된 대상들을 특정 컬럼을 기준으로 그룹핑.
+
+  - HAVING : 그룹에 대한 조건절. 그룹 중 조건에 맞는 그룹만 남김.
+
+  - ORDER BY : 마지막으로, 적절한 컬럼 또는 집계함수 결과값을 기준으로 정렬함.(보통 GROUP BY 기준이 되는 컬럼을 기준으로 정렬함)
+
+<br><br><br>
+
+[목차로](#목차)<br>
+
+## 8. JOIN
+(그림 추가하면서 설명)<br>
+테이블을 분리해야할까?<br>
+-> 테이블 안에 튜플에 대한 중복이 있다면 테이블을 분리하는 것이 맞다.<br>
+데이터 중복을 최소화 하기 위해 정규화를 진행하고 그렇게 정규화 된 테이블을 사용해<br>
+데이터를 합치는 것이 JOIN<br>
+
+<br><br><br>
+
+[목차로](#목차)<br>
+
