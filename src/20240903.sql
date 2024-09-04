@@ -30,13 +30,26 @@ insert into muser values(muser_no.nextval,'670805-1','현진수',2,20000,34);
 insert into muser values(muser_no.nextval,'840207-1','최이런',1,10000,35);
 insert into muser values(muser_no.nextval,'770405-1','이천안',1,10000,31);
 
+select count(*) from muser;
+
 -- 1 ~ 20번 문제
 select count(*) from muser where grade=3;
 select avg(salary) from muser where grade in(1,2,4);
 select count(*) from muser where salary < 20000;
 select avg(salary) from muser where salary >= 30000;
 select name,fn_age(reg_num), salary from muser 
+/* 5번 함수를 만들어 풀이 */
 where salary = (select min(salary) from muser where fn_age(reg_num) = 47) and fn_age(reg_num) = 47;
+/* 5번 CASE 를 사용한 풀이 */
+select name 이름, extract(year from systimestamp) - case 
+    when substr(reg_num,8,1) <= 2 then 1900 + substr(reg_num,1,2)
+    else 2000 + substr(reg_num,1,2)
+end 나이, salary 월급 
+from muser where substr(reg_num,1,2) = '77' and salary = (
+    select min(salary) 
+    from muser 
+    where substr(reg_num,1,2) = '77');
+select name 이름, substr(reg_num,3,4) 생일 from muser;
 select avg(salary) from muser where fn_gender(reg_num) = '남';
 select name, salary from muser where salary > (select avg(salary) from muser);
 select name, salary, (select avg(salary) from muser) from muser where salary > (select avg(salary) from muser);
@@ -47,6 +60,11 @@ select grade, avg(salary), (select avg(salary) from muser) from muser
 group by grade having avg(salary) > (select avg(salary) from muser);
 select name 이름, grade*salary*time 월급명세서 from muser;
 select name 이름, fn_gender(reg_num) 성별 from muser;
+/* case when then 사용 */
+select name 이름, case
+    when substr(reg_num,instr(reg_num,'-')+1,1) in (1,3) then '남'
+    else '여'
+end 성별 from muser;
 select name from muser where time >= 31;
 select name from muser where mod(substr(reg_num,2,1),2) = 0;
 select name, substr(reg_num,1,2) || '년' || substr(reg_num,3,2) || '월' || substr(reg_num,5,2) || '일' 생년월일 from muser;
@@ -71,7 +89,7 @@ select distinct time, sum(salary)over(partition by time) from muser order by tim
 select distinct time, count(*)over(partition by time) from muser order by time;
 select distinct grade, max(salary)over(partition by grade) from muser order by grade;
  / 
---성별 함수 '/' 사용해서 생성한 함수 
+--성별 함수 '/' -> 사용해서 생성한 함수 끊어내기
 create or replace function fn_gender(v_reg_num varchar2)
 return varchar2 is v_gender varchar2(2);
 begin
