@@ -136,15 +136,16 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
 ## 6. 함수 설명
 함수는 특정 기능을 제공한다.<br>
 내가 직접 만들어 사용하는 것과 이미 만들어진 것을 사용하는 것으로 구분할 수 있다.<br>
-함수는 하나하나 다 외우면 좋지만 그럴 수 없기에 검색으로 찾으면서 사용하자<br>
+함수는 하나하나 다 외우면 좋지만 그럴 수 없기에 <mark>검색하면서 사용</mark>하자<br>
 그렇게 사용하면서 몸에 익히자 !<br>
+
 - **만들어 사용**
 
   - 매개변수<br>
   function (abc) -> 소괄호 안에 있는 abc - 함수를 선언할 때 주는 값<br>
 
   - 인자<br>
-  매개변수 자리에 들어가는 값 - 함수를 호출할 때 입력하는 실제 값<br><br>
+  매개변수 자리에 들어가는 값 - 함수를 호출할 때 입력하는 실제 값<br>
 
 - **내장함수** *(사용 방법은 검색해서)*
 
@@ -191,7 +192,8 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
 
   - HAVING : 그룹에 대한 조건절. 그룹 중 조건에 맞는 그룹만 남김.
 
-  - ORDER BY : 마지막으로, 적절한 컬럼 또는 집계함수 결과값을 기준으로 정렬함.(보통 GROUP BY 기준이 되는 컬럼을 기준으로 정렬함)
+  - ORDER BY : 마지막으로, 적절한 컬럼 또는 집계함수 결과값을 기준으로 정렬함.<br>
+       (보통 GROUP BY 기준이 되는 컬럼을 기준으로 정렬함)
 
 <br><br><br>
 
@@ -202,7 +204,7 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
 *질문) 테이블을 분리해야할까?*<br>
 => 테이블 안에 튜플에 대한 중복이 있다면 테이블을 분리하는 것이 맞다.<br>
 
->정규화의 기본적인 목표는 테이블 간에 <u>중복되는 데이터가 발생하지 않도록</u> 하는 것 !<br>
+>정규화의 기본적인 목표는 테이블 간에 <mark style="background-color:red">중복되는 데이터가 발생하지 않도록</mark> 하는 것 !<br>
 중복된 데이터를 허용하지 않음으로써 <u>데이터의 무결성을 유지</u>할 수 있고,<br>
 이로 인해 데이터베이스 관리에 필요한 <u>저장 공간을 축소</u>시키는 효과가 있다.<br>
 데이터의 중복을 피하기 위해 데이터를 구조화하고, 그 과정에서 테이블을 더 작은 테이블로 분해한다.<br>
@@ -210,26 +212,86 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
 
 ### JOIN 종류
 <div style = "text-align: center;">
-<img src=https://www.thoughtco.com/thmb/xh4MUu8HQyX1JVEcxn2IorWogoo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/0iHiL-d7a0c49a861448cb94477386a6f3f05b.png></img><br>
-<p>JOIN 종류</p><br>
-</div><br>
-- FULL JOIN
+<img src=https://www.thoughtco.com/thmb/xh4MUu8HQyX1JVEcxn2IorWogoo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/0iHiL-d7a0c49a861448cb94477386a6f3f05b.png></img></div><br>
 
-- INNER JOIN
+- **FULL JOIN**<br>
+두개의 테이블을 모두 합치는 것<br>
+결과는 N * M의 수만큼 조인이 되어 튜플이 만들어 진다.<br>
+*FULL JOIN은 속도가 많이 느려지기에 절대 현업에서 사용하면 안된다 !*<br>
 
-  - EQUI JOIN
+---
 
-  - NATURAL JOIN
+- **INNER JOIN**<br>
+일반적으로 사용하는 조인<br>
+A, B 테이블에서 동등한 조건이 있을 때 원하는 컬럼을 가져올 수 있다.<br><br>
+ex)<br>
+A테이블의 a컬럼의 값이 10,20,30<br>
+B테이블의 a컬럼의 값이 10,20,30,40 이면<br>
+교집합이 되는 10,20,30의 데이터만 가져올 수 있고,<br>
+B테이블의 a컬럼의 값인 40은 가져올 수 없다.<br><br>
+**Oracle JOIN**<br>
+SELECT [ ] FROM A, B WHERE A.a = B.a;<br>
+**ANSI JOIN**<br>
+SELECT [ ] FROM A INNER JOIN B ON A.a = B.a;<br>
 
-  - JOIN ~ USING
+- **OUTER JOIN**<br>
+INNER 조인에서 추가로 원하는 부분들을 더 가져올 수 있다.<br>
 
-- OUTER JOIN
+  - **LEFT OUTER JOIN**<br>
+  A 테이블과 B 테이블이 있을 때 교집합을 기준으로 왼쪽에 있는 값을 추가로 가져온다.<br><br>
+  ex)<br>
+  A테이블의 a컬럼의 값이 10,20,30,40<br>
+  B테이블의 a컬럼의 값이 10,20,30 이면<br>
+  교집합이 되는 10,20,30의 데이터를 가져온 후<br> 
+  추가로 A테이블의 a컬럼의 값인 40을 가져온다.<br><br>
+  **Oracle JOIN**<br>
+  ~~SELECT [ ] FROM A, B WHERE A.a = B.a(+);~~<br>
+  **ANSI JOIN**<br>
+  SELECT [ ] FROM A LEFT OUTER JOIN B ON A.a = B.a;<br>
 
-  - LEFT OUTER JOIN
+  - **RIGHT OUTER JOIN**<br>
+  A 테이블과 B 테이블이 있을 때 교집합을 기준으로 오른쪽에 있는 값을 추가로 가져온다.<br><br>
+  ex)<br>
+  A테이블의 a컬럼의 값이 10,20,30<br>
+  B테이블의 a컬럼의 값이 10,20,30,40 이면<br>
+  교집합이 되는 10,20,30의 데이터를 가져온 후<br> 
+  추가로 B테이블의 a컬럼의 값인 40을 가져온다.<br><br>
+  **Oracle JOIN**<br>
+  ~~SELECT [ ] FROM A, B WHERE A.a(+) = B.a;~~<br>
+  **ANSI JOIN**<br>
+  SELECT [ ] FROM A RIGHT OUTER JOIN B ON A.a = B.a;<br>
 
-  - RIGHT OUTER JOIN
+  - **FULL OUTER JOIN**<br>
+  말 그대로 A 테이블과 B 테이블이 있을 때 교집합을 기준으로 양쪽에 있는 값을 추가로 가져온다.<br><br>
+  ex)<br>
+  A테이블의 a컬럼의 값이 10,20,30,50<br>
+  B테이블의 a컬럼의 값이 10,20,30,40 이면<br>
+  교집합이 되는 10,20,30의 데이터를 가져온 후<br> 
+  추가로 A테이블의 a컬럼의 값인 50과 B 테이블의 a컬럼의 값인 40을 가져온다.<br><br>
+  **ANSI JOIN(만 가능)**<br>
+  SELECT [ ] FROM A FULL OUTER JOIN B ON A.a = B.a;<br><br>
 
-  - FULL OUTER JOIN
+*추가)<br>
+INNER JOIN은 null값이 있는 경우 처리하지 못해서 null값이 제외되지만, <br>
+OUTER JOIN은 null값을 포함해서 가져온다.*<br>
+
+*질문)<br> 
+만약 SELECT 문에 조인과 그룹화가 있다면?*<br>
+=><br>
+ 조인을 한 후에 그룹화를 진행한다.<br>
+조인으로 만들어진 데이터들을 가지고 그룹화를 하는 것 !<br>
+
+*질문)<br>
+만약 조인을 사용하면서 조건을 추가하고 싶다면?*<br>
+=> WHERE절 뒤에 AND를 사용하면 된다.<br>
+
+*질문)<br>
+여러개의 테이블을 조인할 때?*<br>
+=> <br>
+두개의 테이블을 먼저 조인해서 나온 데이터와 조인하고자 하는 새로운 테이블을 조인한다.<br>
+이런 방식으로 10개든 100개든 진행 !<br>
+**(((((A 조인 B) 조인 C) 조인 D) 조인 E) ... 조인 n)**<br>
+
 <br><br><br>
 
 [목차로](#목차)<br>
