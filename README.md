@@ -211,7 +211,7 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
 ### JOIN 종류
 <div style = "text-align: center;">
 <img src=https://www.thoughtco.com/thmb/xh4MUu8HQyX1JVEcxn2IorWogoo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/0iHiL-d7a0c49a861448cb94477386a6f3f05b.png></img><br>
-<q style="text-align:center;">JOIN 종류</q>
+<h style="text-align:center; color:darkgray;">JOIN 종류</h>
 </div><br>
 - FULL JOIN
 
