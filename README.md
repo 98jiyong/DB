@@ -206,12 +206,12 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
 중복된 데이터를 허용하지 않음으로써 <u>데이터의 무결성을 유지</u>할 수 있고,<br>
 이로 인해 데이터베이스 관리에 필요한 <u>저장 공간을 축소</u>시키는 효과가 있다.<br>
 데이터의 중복을 피하기 위해 데이터를 구조화하고, 그 과정에서 테이블을 더 작은 테이블로 분해한다.<br>
--> 그래서 분리된 테이블을 합쳐서 필요한 데이터를 추출할 때 사용하는 것이 <u>**JOIN**</u><br><br>
+-> 그래서 분리된 테이블을 합쳐서 필요한 데이터를 추출할 때 사용하는 것이 <u>**JOIN**</u><br>
 
 ### JOIN 종류
 <div style = "text-align: center;">
 <img src=https://www.thoughtco.com/thmb/xh4MUu8HQyX1JVEcxn2IorWogoo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/0iHiL-d7a0c49a861448cb94477386a6f3f05b.png></img><br>
-<q>JOIN 종류</q>
+<q style="text-align:center;">JOIN 종류</q>
 </div><br>
 - FULL JOIN
 
