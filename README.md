@@ -177,7 +177,7 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
 그룹화는 CRUD에 R인 SELECT에서 사용된다.<br>
 중요한 문법이라고 생각하기 때문에 추가로 분리해서 정리!<br>
 
-데이터에 대한 집계를 하기 위해, 여러행의 값을 더하거나, 개수를 세는 등<br>
+>데이터에 대한 집계를 하기 위해, 여러행의 값을 더하거나, 개수를 세는 등<br>
 데이터에 관한 계산을 위해서 그룹화를 한다.<br>
 데이터를 그룹화 할 때 어떤 컬럼값을 기준으로 그룹 함수를 적용할지 잘 생각해야 한다.<br>
 
@@ -199,11 +199,37 @@ Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
 
 ## 8. JOIN
 (그림 추가하면서 설명)<br>
-테이블을 분리해야할까?<br>
--> 테이블 안에 튜플에 대한 중복이 있다면 테이블을 분리하는 것이 맞다.<br>
-데이터 중복을 최소화 하기 위해 정규화를 진행하고 그렇게 정규화 된 테이블을 사용해<br>
-데이터를 합치는 것이 JOIN<br>
+*질문) 테이블을 분리해야할까?*<br>
+=> 테이블 안에 튜플에 대한 중복이 있다면 테이블을 분리하는 것이 맞다.<br>
 
+>정규화의 기본적인 목표는 테이블 간에 <u>중복되는 데이터가 발생하지 않도록</u> 하는 것 !<br>
+중복된 데이터를 허용하지 않음으로써 <u>데이터의 무결성을 유지</u>할 수 있고,<br>
+이로 인해 데이터베이스 관리에 필요한 <u>저장 공간을 축소</u>시키는 효과가 있다.<br>
+데이터의 중복을 피하기 위해 데이터를 구조화하고, 그 과정에서 테이블을 더 작은 테이블로 분해한다.<br>
+-> 그래서 분리된 테이블을 합쳐서 필요한 데이터를 추출할 때 사용하는 것이 <u>**JOIN**</u><br><br>
+
+### JOIN 종류
+<div style = "text-align: center;">
+<img src=https://www.thoughtco.com/thmb/xh4MUu8HQyX1JVEcxn2IorWogoo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/0iHiL-d7a0c49a861448cb94477386a6f3f05b.png></img><br>
+<q>JOIN 종류</q>
+</div><br>
+- FULL JOIN
+
+- INNER JOIN
+
+  - EQUI JOIN
+
+  - NATURAL JOIN
+
+  - JOIN ~ USING
+
+- OUTER JOIN
+
+  - LEFT OUTER JOIN
+
+  - RIGHT OUTER JOIN
+
+  - FULL OUTER JOIN
 <br><br><br>
 
 [목차로](#목차)<br>
