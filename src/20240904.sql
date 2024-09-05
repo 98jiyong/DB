@@ -94,6 +94,8 @@ select u.name, u.addr
 from users u, carinfo c
 where u.id = c.id
 and c.c_num = '7788';
+-- 다른 풀이
+select name, addr from users where id=(select id from carinfo where c_num='7788');
 
 select u.name, u.addr
 from users u
@@ -105,12 +107,11 @@ where c.c_num is null;
 조인을 한 후에 그룹화를 진행
 조인을 해서 만들어진 테이블 안에서 그룹화를 진행한다.
 */
-select u.name 회원, count(c.id) "등록된 자동차 수", c.id
+select u.name 회원, count(c.id) "등록된 자동차 수"
 from users u
 left outer join carinfo c
 on u.id = c.id
-group by c.id, u.name
-order by u.name;
+group by (u.id, u.name);
 
 select u.name 회원, count(c.id) "등록된 자동차 수"
 from users u
@@ -148,6 +149,8 @@ right outer join companycar b
 on a.c_num = b.c_num
 where a.c_num is null;
 
+select c_name from companycar where c_price >= 1000;
+-- 심화
 select a.c_num
 from carinfo a, companycar b
 where a.c_num = b.c_num
@@ -166,7 +169,9 @@ where b.c_num is null;
 10개든 100개든 그렇게 계속 조인을 진행
 (a 조인 b) -> (a 조인 b) 조인 c)
 */
-select a.name, b.c_num, c.c_name
+
+-- nvl => null값이 있으면 대체해라
+select a.name, nvl(b.c_num, '없음') ,NVL(c.c_name, '없음') 
 from users a 
 left outer join carinfo b
 on a.id = b.id
