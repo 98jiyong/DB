@@ -1,4 +1,4 @@
-# DB_Oracle
+# DB_Study
 
 
 ## 목차
