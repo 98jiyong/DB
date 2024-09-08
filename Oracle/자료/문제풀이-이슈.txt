@@ -1,0 +1,26 @@
+-9월16일 용산역을 출발하는 기차시간표 찾기 
+select s_st, sch_time
+from schedule
+where to_char(sch_time, 'YYYYMMDD')='20240916'
+and s_st='s05';
+
+-출발일 10월05일 홍길동으로 중복 예약된 예약코드 'r07' 삭제
+delete from reservation where res_time='24/10/05';
+
+
+-12월 출발하는 기차스케줄 모두 10월로 변경하기
+update schedule set sch_time='24/10/24' where sch_time='24/12/24';
+update schedule set sch_time='24/10/25' where sch_time='24/12/25';
+or
+update schedule set sch_time=replace(sch_time,'24/12','24/10');
+or
+update schedule set sch_time=substr(sch_time,1,3)||'10'||substr(sch_time,6,24) where sch_time like '24/12/%';
+
+select * from schedule where substr(sch_time,1,5)='24/10';
+update schedule set sch_time='24/10/25' where substr(sch_time,1,5)='24/12';
+
+
+-중복예약을 방지하기 위해 조치할 방안은?
+
+-포인트 디폴트 값 넣는 법 - alter table 테이블명 modify (컬럼명 default 값);
+		         - insert ~~~~~~~~~~~~~~

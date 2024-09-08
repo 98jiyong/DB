@@ -1,0 +1,28 @@
+고객
+insert into client values('amanda','manda123','아만다',44,'010-2293-5868');
+insert into client values('jiyong','1111','정지용',27,'010-8740-5966');
+insert into client values('Brad','1963','브래드피트',61,'010-9433-5732');
+insert into client values('taeha','tae9999','태하',4','010-3239-6679');
+insert into client values('presi','dent2024','윤석열',63,'010-2217-4782');
+
+역
+insert into station values('s01','서울역',1);
+insert into station values('s02','부산역',2);
+insert into station values('s03','인천역',3);
+insert into station values('s04','대구역',4);
+insert into station values('s05','광주역',5);
+insert into station values('s06','대전역',6);
+insert into station values('s07','수원역',7);
+insert into station values('s08','전주역',8);
+insert into station values('s09','창원역',9);
+insert into station values('s10','경주역',10);
+insert into station values('s11','속초역',11);
+insert into station values('s12','청주역',12);
+insert into station values('s13','제주역',13);
+insert into station values('s14','용산역',14);
+insert into station values('s15','강릉역',15);
+insert into station values('s16','원주역',16);
+insert into station values('s17','울산역',17);
+insert into station values('s18','평택역',18);
+insert into station values('s19','아산역',19);
+insert into station values('s20','익산역',20);

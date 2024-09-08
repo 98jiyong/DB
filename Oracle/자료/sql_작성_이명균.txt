@@ -1,0 +1,40 @@
+create table Client (
+user_id 	  varchar2(10)  primary key,
+user_pw    varchar2(10)  not null,
+user_name varchar2(10),
+user_tel     varchar2(13),
+user_age    number(3),
+user_point  number(5),
+user_verify  varchar2(1) CHECK (user_verify IN ('Y','N'))
+);
+
+create table Station (
+st_id        varchar2(3)  primary key,  
+st_name    varchar2(20)
+);
+
+create table Train (
+tr_id        varchar2(3)  primary key,
+tr_name    varchar2(20),
+tr_type     varchar2(10)
+);
+
+create table Schedule (
+sch_id       varchar2(3) primary key,
+sch_time    TIMESTAMP,
+s_st          varchar2(3), 
+e_st          varchar2(3),
+tr_id         varchar2(3),
+constraint fk_Station_st_id_s_st foreign key (s_st) references Station(st_id) on delete cascade,
+constraint fk_Station_st_id_e_st foreign key (e_st) references Station(st_id) on delete cascade,
+constraint fk_Client_user_id foreign key (tr_id) references Train(tr_id) on delete cascade
+);
+
+create table Reservation (
+res_id        varchar2(3) primary key,
+res_time     TIMESTAMP,
+user_id       varchar2(10),
+sch_id        varchar2(3),
+constraint fk_Client_user_id_Reservation foreign key (user_id) references Client(user_id) on delete set NULL,
+constraint fk_Schedule_sch_id_Reservation foreign key (sch_id) references Schedule(sch_id) on delete set NULL
+);
