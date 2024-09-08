@@ -302,7 +302,8 @@ OUTER JOIN은 null값을 포함해서 가져온다.*<br>
 [목차로](#목차)<br>
 
 ## 9. TRIGGER
-
+### 트리거(TRIGGER)란?<br>
+<img src= "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F992F81385B1CE85A07"><br>
 <br><br><br>
 
 [목차로](#목차)<br>
