@@ -10,11 +10,17 @@
 [6. 함수 설명](#6-함수-설명)<br>
 [7. 그룹화](#7-그룹화)<br>
 [8. JOIN](#8-JOIN)<br>
+[9. TRIGGER](#9-TRIGGER)<br>
+[10. VIEW](#10-VIEW)<br>
 
 ## 1. 개발 환경
-**DBMS** - Data Base Management Sysytem => **Oracle 11g** 프로그램 사용<br>
-Oracle 11g 프로그램을 **Sql plus** 사용해 조작 <br>
-**Sql Developer** - Oracle에서 제공하는 DB IDE<br>
+- **DBMS** - Data Base Management Sysytem 
+  - Oracle 11g<br>
+  **Sql plus** 사용해 Oracle 11g 프로그램을 조작 <br>
+  **Sql Developer** - Oracle에서 제공하는 DB IDE<br>
+  - MariaDB<br>
+  **Dbeaver** 데이터베이스 툴을 사용해 MariaDB 조작<br>
+
 #### 설정
 - 새 데이터베이스 접속
 - 접속 이름, 사용자 이름, 비밀번호 설정 (사용자, 비밀번호는 처음 Oracle 설치시 사용했던 걸로)
@@ -295,3 +301,14 @@ OUTER JOIN은 null값을 포함해서 가져온다.*<br>
 
 [목차로](#목차)<br>
 
+## 9. TRIGGER
+
+<br><br><br>
+
+[목차로](#목차)<br>
+
+## 10. VIEW
+
+<br><br><br>
+
+[목차로](#목차)<br>
