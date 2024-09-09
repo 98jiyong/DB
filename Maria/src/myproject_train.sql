@@ -108,3 +108,9 @@ where d.user_tel = a.user_tel
 and c.sch_id = d.sch_id
 and c.tr_id = b.tr_id
 order by "예약시간";
+
+select date_format(출발시간,'%Y-%m-%d') as '출발일', count(*) from ticket_view tv group by date_format(출발시간,'%Y-%m-%d') order by 출발시간;
+select 예약자, 기차정보 from ticket_view tv where 기차정보 like '누리호%';
+select 예약자, 출발역 from ticket_view tv  where 출발역 = '부산역';
+select "할인 가격" from ticket_view tv ;
+select date_format(출발시간,'%Y-%m-%d') as '출발일', count(*), sum(할인가격) from ticket_view tv group by date_format(출발시간,'%Y-%m-%d') order by 출발시간;
